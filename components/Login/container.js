@@ -7,12 +7,13 @@ import Login from './presenter';
 class Container extends Component{
     render(){
         const {isLogin, navigation} = this.props;
-        console.log("isLogin:"+isLogin);
-        console.log("navigation:"+navigation);
+        //console.log("isLogin:"+isLogin);
+        //console.log("navigation:"+navigation);
         return (
             <Login
                 {...this.props}
                 loginBtn={_loginBtn}
+                testBtn={_testBtn}
             ></Login>
         );
     }
@@ -26,6 +27,27 @@ _loginBtn = navigation => {
     // root page 변경
     //navigation.replace("Chatting");
 
+}
+
+_testBtn = (props) => {
+    console.log(props);
+    console.log("testBtn cliked");
+    fetch('http://localhost:8080/', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            firstParam: 'yourValue',
+            secondParam: 'yourOtherValue',
+        }),
+    })
+    .then((response)=>{
+        console.log(response);
+    }).catch((error)=>{
+        console.log(error);
+    });
 }
 
 const styles = StyleSheet.create({

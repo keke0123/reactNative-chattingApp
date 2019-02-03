@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 //import Login from './presenter';
 
-import { View, StyleSheet, Text, Button } from "react-native";
+import { View, StyleSheet, Text, Button, ScrollView } from "react-native";
 
 //
 const Chatting = (props) => (
 
     <View style={styles.container}>
         <Text>chatting page</Text>
+        <ScrollView></ScrollView>
     </View>
 );
 

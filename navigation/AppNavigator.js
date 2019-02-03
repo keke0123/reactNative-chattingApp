@@ -1,22 +1,30 @@
 import React from 'react';
 
-import { createStackNavigator, createAppContainer, createSwitchNavigator } from 'react-navigation';
+import { createStackNavigator, createAppContainer, createBottomTabNavigator, createSwitchNavigator } from 'react-navigation';
 
 import Login from '../components/Login';
 import Chatting from '../components/Chatting';
 
-const AppNavigator = createStackNavigator(
+const LoginNavigator = createStackNavigator(
     {
         Login: {
-            screen: Login
+            screen: Login,
+            navigationOptions:{
+                title:'login',
+                header:null
+            }
         },
         Chatting: {
-            screen: Chatting
+            screen: Chatting,
+            navigationOptions:{
+                title:'chatting'
+            }
         }
     },{
-        initialRouteName:"Login"
+        initialRouteName:"Login",
+        //headerMode:'none'
     }
 
 );
 
-export default createAppContainer(AppNavigator);
+export default createAppContainer(LoginNavigator);
