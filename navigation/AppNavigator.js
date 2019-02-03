@@ -2,23 +2,19 @@ import React from 'react';
 
 import { createStackNavigator, createAppContainer, createSwitchNavigator } from 'react-navigation';
 
-import TestScreen from '../screens/TestScreen';
-import TestScreen1 from '../screens/TestScreen1';
-import TestScreen2 from '../screens/TestScreen2';
+import Login from '../components/Login';
+import Chatting from '../components/Chatting';
 
 const AppNavigator = createStackNavigator(
     {
-        Test: {
-            screen: TestScreen
+        Login: {
+            screen: Login
         },
-        Test1: {
-            screen: TestScreen1
-        },
-        Test2: {
-            screen: TestScreen2
+        Chatting: {
+            screen: Chatting
         }
     },{
-        initialRouteName:"Test1"
+        initialRouteName:"Login"
     }
 
 );
