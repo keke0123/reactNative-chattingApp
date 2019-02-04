@@ -8,7 +8,6 @@ const Chatting = (props) => (
 
     <View style={styles.container}>
         <Text>chatting page</Text>
-        <ScrollView></ScrollView>
     </View>
 );
 
