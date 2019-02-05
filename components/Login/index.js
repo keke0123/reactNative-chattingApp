@@ -6,16 +6,18 @@ import Container from './container';
 
 function mapStateToProps(state){
     //console.log(state);
-    const {isLogin} = state
+    const {isLogin, loginId} = state
     return {
-        isLogin
+        isLogin,
+        loginId
     };
 }
 
 function mapDispatchToProps(dispatch){
     return {
         logIn:bindActionCreators(loginActions.logIn, dispatch),
-        logOut:bindActionCreators(loginActions.logOut, dispatch)
+        logOut:bindActionCreators(loginActions.logOut, dispatch),
+        setId:bindActionCreators(loginActions.setId, dispatch)
     };
 }
 

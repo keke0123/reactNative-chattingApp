@@ -3,6 +3,7 @@
 // actions
 const Login = 'Login';
 const Logout = 'Logout';
+const SetId = 'SetId';
 
 // action creators
 function logIn(){
@@ -15,10 +16,17 @@ function logOut(){
         type:Logout
     };
 }
+function setId(text){
+    return{
+        type:SetId,
+        text:text
+    };
+}
 
 // reducer
 const initialState = {
-    isLogin : false
+    isLogin : false,
+    loginId : '',
 }
 function reducer(state=initialState, action){
     switch(action.type){
@@ -26,6 +34,8 @@ function reducer(state=initialState, action){
             return applyLogin(state);
         case Logout:
             return applyLogout(state);
+        case SetId:
+            return settingId(state, action.text);
         default:
             return state;
     }
@@ -44,11 +54,18 @@ function applyLogout(state){
         isLogin:false
     }
 }
+function settingId(state,text){
+    return{
+        ...state,
+        loginId:text
+    }
+}
 
 // export action creation
 const actionCreators = {
     logIn,
-    logOut
+    logOut,
+    setId
 }
 export {actionCreators};
 

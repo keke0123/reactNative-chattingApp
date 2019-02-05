@@ -8,18 +8,28 @@ class Container extends Component{
     constructor(props){
         super(props);
         this.state={
-            response:false,
+            response:false
         };
     }
 
     _testSocket = (props) => {
         console.log("testSocket clicked");
-
+        console.log(this.state.loginId);
     }
 
     _testSocket2 = (props) => {
         console.log("testSocket2 clicked");
+        console.log(this);
         
+    }
+    
+    _loginBtn = navigation => {
+        console.log("loginBtn clicked");
+        console.log("this.loginId:"+this.props.loginId);
+        // pop
+        navigation.navigate("Chatting");
+        // root page 변경
+        //navigation.replace("Chatting");
     }
 
     render(){
@@ -29,7 +39,7 @@ class Container extends Component{
         return (           
             <Login
                 {...this.props}
-                loginBtn={_loginBtn}
+                loginBtn={this._loginBtn}
                 testBtn={_testBtn}
                 testSocket={this._testSocket}
                 testSocket2={this._testSocket2}
@@ -39,14 +49,7 @@ class Container extends Component{
 }
 //onPress={() => {_loginBtn(navigation);}}
 
-_loginBtn = navigation => {
-    console.log("loginBtn clicked");
-    // pop
-    navigation.navigate("Chatting");
-    // root page 변경
-    //navigation.replace("Chatting");
 
-}
 
 _testBtn = (props) => {
     console.log(props);
