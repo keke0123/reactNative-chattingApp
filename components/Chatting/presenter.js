@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 //import Login from './presenter';
 
-import { View, StyleSheet, Text, Button, ScrollView, TextInput, TouchableHighlight} from "react-native";
+import { Container, Content, View, StyleSheet, Text, Button, ScrollView, TextInput, TouchableHighlight, KeyboardAvoidingView} from "react-native";
 
 // easy grid 오픈소스
 import {Col, Row, Grid} from 'react-native-easy-grid';
@@ -19,7 +19,7 @@ const Chatting = (props) => {
                 <ScrollView style={styles.scroll}>
                     {
                         props.messages.map((msg,i) => 
-                            msg.isMe ?
+                            msg.isMe=='true' ?
                             (
                                 <View style={[styles.msgBox]} key={i}>
                                     <Text style={styles.textBox}>id : {msg.name}</Text>
@@ -45,10 +45,11 @@ const Chatting = (props) => {
                             placeholder="전송할 내용을 입력해주세요"
                             onChangeText={(text)=>{
                                 //console.log(text);
-                                x=text;
-                                //console.log(x);
-                                
+                                //x=text;
+                                //console.log(x); 
+                                props.onChangeMsg(text);
                             }}
+                            value={props.inputTxt}
                         ></TextInput>
                     </View>
                 </Col>
@@ -57,8 +58,9 @@ const Chatting = (props) => {
                         <TouchableHighlight 
                             underlayColor='red'
                             onPress={(e)=>{
-                                console.log(x);
-                                console.log(e);
+                                props.sendBtn();
+                                //console.log(x);
+                                //console.log(e);
                                 //console.log(props.testTxt);
                         }}>
                             <Text
@@ -68,17 +70,17 @@ const Chatting = (props) => {
                     </View>
                 </Col>
             </Row>
-        </Grid>
+        </Grid>      
     )
 };
 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
-      justifyContent: "center",
-      alignItems: 'center',
-      backgroundColor:'red'
+      //backgroundColor: '#fff',
+      //justifyContent: "center",
+      //alignItems: 'center',
+      //backgroundColor:'red'
     },
     scroll:{
         flex:1,
@@ -98,6 +100,7 @@ const styles = StyleSheet.create({
     isMe:{
         alignSelf: 'flex-start',
         backgroundColor:'red',
+        alignItems: 'flex-start',
     },
     textBox:{
         fontSize: 15,

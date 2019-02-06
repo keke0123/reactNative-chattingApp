@@ -34,11 +34,6 @@ const Login = (props) => (
                 </View>
             </Col>
         </Row>
-        <Row size={1}>
-            <Button title="테스트" onPress={()=>{props.testBtn(props)}}/>
-            <Button title="소켓테스트1" onPress={() => {props.testSocket(props)}}/>
-            <Button title="소켓테스트2" onPress={() => {props.testSocket2(props)}}/>
-        </Row>
     </Grid>
     
 );
